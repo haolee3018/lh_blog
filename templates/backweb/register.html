@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    欢迎申请成为大叔
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/backweb/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/backweb/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/backweb/css/login.css' %}">
+	<link rel="apple-touch-icon-precomposed" href="{% static '/backweb/images/icon/icon.png' %}">
+	<link rel="shortcut icon" href="{% static 'backweb/images/icon/favicon.ico' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="siteIcon"><img src="{% static '/backweb/images/icon/icon.png' %}"  title="欢迎进入大叔的垃圾博客" /></div>
+        <form action="" method="post"  class="form-signin">
+            {% csrf_token %}
+            <h2 class="form-signin-heading" align="center">申请成为大叔</h2>
+            <input type="text"  name="username" class="form-control" placeholder="{% if err_name %}{{ err_name }}{% else %}请输入用户名{% endif %}"  maxlength="10">
+            <input type="password"  name="password" class="form-control" placeholder="{% if err_pwd%}{{ err_pwd }}{% else %}请输入密码{% endif %}"  maxlength="18">
+            <input type="password"  name="password2" class="form-control" placeholder="{% if err_data %}{{ err_data }}{% else %}请再输入一次{% endif %}"  maxlength="18">
+            <p>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+                <a href="{% url 'backweb:login' %}"><button class="btn btn-lg btn-primary btn-block" type="button" >返回登录</button></a>
+            </p>
+      </form>
+    </div>
+
+{% endblock %}
+
